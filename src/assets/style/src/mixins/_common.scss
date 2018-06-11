@@ -1,0 +1,171 @@
+//清除浮动
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+//阴影
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+// Box sizing
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+  box-sizing: $boxmodel;
+}
+
+@mixin box-flex($number) {
+  -webkit-box-flex: $number;
+  box-flex: $number;
+}
+
+@mixin display-box() {
+  display: -webkit-box;
+  display: box;
+}
+
+@mixin box-Y() {
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
+
+@mixin box-center-Y() {
+  -webkit-box-align: center;
+  box-align: center;
+}
+
+@mixin box-center-X() {
+  -webkit-box-pack: center;
+  box-pack: center;
+}
+
+@mixin box-center() {
+  @include box-center-X;
+  @include box-center-Y;
+}
+
+@mixin box-pack-justify($model:justify) {
+  -webkit-box-pack: $model;
+  box-pack: $model;
+}
+
+@mixin same-line($number:1) {
+  @include display-box;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;
+}
+
+@mixin radio-yuan() {
+  border-radius: 50%;
+  border-radius: 99999px;
+  overflow: hidden;
+}
+
+@mixin translateZ($number) {
+  -webkit-transform: translateZ($number);
+  transform: translateZ($number);
+}
+
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+
+//隐藏被旋转的 div 元素的背面：
+@mixin backface-visibility($model:hidden) {
+  -webkit-backface-visibility: $model;
+  backface-visibility: $model;
+}
+
+//定义 3D 元素距视图的距离，以像素计
+@mixin perspective($number:1000){
+  -webkit-perspective: $number;
+  perspective: $number;
+}
+
+//Input Placeholder
+@mixin placeholder($color: #999, $text-indent: 0) {
+  &::-moz-placeholder { // Firefox 19+
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  &::-webkit-input-placeholder {
+    // Safari placeholder margin issue
+    text-indent: $text-indent;
+    color: $color;
+  }
+}
+
+@mixin center($width: null, $height: null) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @if not $width and not $height {
+    transform: translate(-50%, -50%);
+  } @else if $width and $height {
+    width: $width;
+    height: $height;
+    margin: -($width / 2) #{0 0} -($height / 2);
+  } @else if not $height {
+    width: $width;
+    margin-left: -($width / 2);
+    transform: translateY(-50%);
+  } @else {
+    height: $height;
+    margin-top: -($height / 2);
+    transform: translateX(-50%);
+  }
+}
+
+//三角形
+@mixin triangle($direction, $size, $borderColor ) {
+  content:"";
+  height: 0;
+  width: 0;
+
+  @if $direction == top {
+    border-bottom:$size solid $borderColor;
+    border-left:$size dashed transparent;
+    border-right:$size dashed transparent;
+  }
+  @else if $direction == right {
+    border-left:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  }
+  @else if $direction == bottom {
+    border-top:$size solid $borderColor;
+    border-left:$size dashed transparent;
+    border-right:$size dashed transparent;
+  }
+  @else if $direction == left {
+    border-right:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  }
+}
+
+
+@mixin animate-time($time:0.3s){
+  -webkit-transition: all $time ease-in-out;
+  -moz-transition: all $time ease-in-out;
+  -o-transition: all $time ease-in-out;
+  -ms-transition: all $time ease-in-out;
+  transition: all $time ease-in-out;
+}

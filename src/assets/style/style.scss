@@ -1,0 +1,44 @@
+@import "src/base";
+@import "default";
+
+
+.clearfix {
+  @include clearfix;
+}
+
+/*开启3d加速*/
+.open-3d {
+  @include translate3d(0,0,0);
+  @include backface-visibility;
+  @include perspective;
+}
+
+/*隐藏局部 滚动条*/
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+.content-default-style{
+  position: relative;
+  width: $content-width;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.block{
+  display: block;
+}
+.margin-top128{
+  margin-top: 128px;
+}
+.margin-top256{
+  margin-top: 256px;
+}
+.bg-img{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+

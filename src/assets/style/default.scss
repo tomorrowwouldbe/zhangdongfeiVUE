@@ -1,0 +1,159 @@
+*,
+*:before,
+*:after {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @include box-sizing(border-box);
+  padding: 0;
+  margin: 0;
+  font-family: $font-family-base;
+}
+
+html {
+  font-size: $html-font-size;
+}
+
+body {
+  user-select: none;
+  background-color: $body-bg-color;
+  /*在webkit内核的浏览器上，只要输入框周围有图片，只要稍微一拖，进入输入框，就会把图片地址，或链接放入输入框*/
+  -webkit-user-drag: none;
+  /*在iOS上，当你触摸并按住触摸的目标，比如一个链接，Safari浏览器将显示链接有关的系统默认菜单。这个属性可以让你禁用系统默认菜单。*/
+  -webkit-touch-callout: none;
+  /*使页面上的字体抗锯齿,使用后字体看起来会更清晰舒服。加上之后就顿时感觉页面小清晰了。*/
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  min-width: 1300px;
+}
+
+*[contenteditable] {
+  -webkit-user-select: auto !important;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="checkbox"],
+button {
+  -webkit-appearance: none;
+}
+button{
+  padding: 0;
+  margin: 0;
+}
+
+a , p, div, input, textarea, select, button {
+  outline: none;
+}
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="checkbox"],
+button {
+  -webkit-appearance: none;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+ol, ul, li {
+  list-style: none;
+  list-style-type: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+a[disabled],
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+a ion-label,
+button ion-label {
+  pointer-events: none;
+}
+
+button {
+  border: 0;
+  font-family: inherit;
+  font-style: inherit;
+  font-variant: inherit;
+  line-height: 1;
+  text-transform: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+a,
+a div,
+a span,
+a ion-icon,
+a ion-label,
+button,
+button div,
+button span,
+button ion-icon,
+button ion-label,
+[tappable],
+[tappable] div,
+[tappable] span,
+[tappable] ion-icon,
+[tappable] ion-label,
+input,
+textarea {
+  touch-action: manipulation;
+}
+
+html input[type="button"], // 1
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer; // 3
+
+  -webkit-appearance: button; // 2
+}
+
+form,
+input,
+optgroup,
+select {
+  margin: 0; // 3
+
+  font: inherit; // 2
+  color: inherit; // 1
+}
+
+
+label,
+input,
+select,
+textarea {
+  font-family: inherit;
+  line-height: normal;
+}
+
+textarea {
+  overflow: auto;
+
+  height: auto;
+
+  font: inherit;
+  color: inherit;
+}
